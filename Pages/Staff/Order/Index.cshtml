@@ -1,0 +1,74 @@
+﻿@page
+@model Project.Pages.Order.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+@*<p>
+    <a href="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].RequiredDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ShippedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Freight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].ShipAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Customers)
+            </th>
+            <th>
+                <a href="Create"><img src="https://icons-for-free.com/iconfiles/png/512/create+cross+new+plus+icon-1320168707626274697.png" /></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiredDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Freight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customers.CustomerID)
+            </td>
+            <td>
+                    <style>
+                        img {
+                            width: 5%;
+                        }
+                    </style>
+                    <a class="nav-link text-dark" href="/Staff/Order/Edit?id=@item.OrderID"><img src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" /></a> 
+                    <a class="nav-link text-dark" href="/Staff/Order/Details?id=@item.OrderID"><img src="https://icon-library.com/images/icon-for-details/icon-for-details-1.jpg" /></a> 
+                    <a class="nav-link text-dark" href="/Staff/Order/Delete?id=@item.OrderID"><img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" /></a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

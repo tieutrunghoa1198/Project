@@ -1,0 +1,62 @@
+﻿@page
+@model Project.Pages.Account.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+@*<p>
+    <a href="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Type)
+            </th>
+            <th>
+                <a href="Create"><img src="https://icons-for-free.com/iconfiles/png/512/create+cross+new+plus+icon-1320168707626274697.png" /></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Account) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                    <style>
+                        img {
+                            width: 4%;
+                        }
+                    </style>
+                    <a class="nav-link text-dark" href="/Admin/Account/Edit?id=@item.AccountID"><img src="https://cdn-icons-png.flaticon.com/512/1827/1827951.png" /></a> 
+                    <a class="nav-link text-dark" href="/Admin/Account/Details?id=@item.AccountID"><img src="https://icon-library.com/images/icon-for-details/icon-for-details-1.jpg" /></a> 
+                    <a class="nav-link text-dark" href="/Admin/Account/Delete?id=@item.AccountID"><img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
